@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
  *
  * @author silua
  */
-public class Order {
+public class Order implements Serializable{
     private String orderId;
     private String customerId;
     private String province;
@@ -104,3 +104,4 @@ public class Order {
                             orderId, sdf.format(eventDate), customerId, menuId, numOfTables);
     }
 }
+
