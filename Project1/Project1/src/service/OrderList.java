@@ -56,7 +56,31 @@ public class OrderList extends ArrayList<Order>{
         Date eventDate = inputter.getDate("Enter date", Acceptable.DATE_VALID);
         
          
-        this.add(new Order(customerId, menuId, numOfTables, eventDate));
+        Order newOrder = new Order(customerId, menuId, numOfTables,eventDate);
+        this.add(newOrder);
+        
+        Customer currentCus = cList.searchById(customerId);
+        SetMenu currentSet = mList.searchByCode(menuId);
+            System.out.println("Code        :"+currentCus.getId()   );
+            System.out.println("Name        :"+currentCus.getName());
+            System.out.println("Phone number:"+currentCus.getPhone());
+            System.out.println("Email       :"+ currentCus.getEmail());
+            System.out.println("--------------------------------------");
+            System.out.println("Code of Set Menu    :"+ newOrder.getOrderId());
+            System.out.println("Set menu Name       :"+ currentSet.getName());
+            System.out.println("Date                :"+ newOrder.getEventDate());
+            System.out.println("Tables              :"+ newOrder.getNumOfTables());
+            System.out.println(String.format(Locale.US,"Price             %,.0f:",currentSet.getPrice()));
+            System.out.println("Ingredients:");
+                String [] tam=currentSet.getIngredients().split("#");
+                for (String t : tam){
+                    System.out.println(t);
+                }
+            System.out.println("----------------------------------------");
+            System.out.println(String.format(Locale.US,"Total cost: %,.0f", currentSet.getPrice() * newOrder.getNumOfTables()));
+            System.out.println("----------------------------------------");
+            
+        
         System.out.println("ORDER PLACED");
         
     }
@@ -161,3 +185,4 @@ public class OrderList extends ArrayList<Order>{
     
     
    
+
